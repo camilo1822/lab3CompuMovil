@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link rel="manifest" href="manifest.json">
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+   
+
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+  </head>
+  <body ng-app="starter" ng-controller="lugaresCtrl">
+
+    <ion-pane>
+      <ion-header-bar class="bar-stable">
+        <h1 class="title">CLIMA</h1>
+      </ion-header-bar>
+      <ion-content>
+        <div class="list">
+            <h6>Ingrese Ciudad a consultar:</h6>
+            <input value="ingresado" ng-model="ingresado"></input>
+            <br>
+            <br>
+            <a class="item item-avatar-left" target="_blank">
+            <img ng-src="https://userscontent2.emaze.com/images/a161348a-621b-492c-bbb9-cdfc359ca08a/c5378e0290fc63564b8e97b5ad599a6e.jpg">
+            <h2 class="post-title">Temperatura: {{ lugares.main.temp }}</h2>
+            <h2 class="post-title">Humedad: {{ lugares.main.humidity }}</h2>
+            <h2 class="post-title">Descripcion: {{ lugares.weather[0].description }}</h2>
+            <h2 class="post-title">Ultimo ingreso: {{ date | date:'yyyy-MM-dd-HH-mm-ss' }}</h2>
+            </a>
+            <h6>Actualizar: {{countdown}}</h6>
+            <h6 ng-if="countdown==1" ng-init="cambio(ingresado)"></h6>
+            <button class="button button-block button-positive" ng-click="cambio(ingresado)">
+                Consultar Clima
+            </button>
+            
+        </div>
+      </ion-content>
+    </ion-pane>
+  </body>
+</html>
